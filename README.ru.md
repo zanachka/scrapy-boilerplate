@@ -1,11 +1,9 @@
 # scrapy-boilerplate
 
-This is a boilerplate for new Scrapy projects.
+This is a boilerplate для new Scrapy project.
 
 *The project is a WIP, so expect major changes and additions (mostly latter).
 Master branch is to be considered as always ready to use, with major changes/features introduced in feature branches.*
-
-*Read this in other languages: [Russian](README.ru.md)
 
 ## Features
 
