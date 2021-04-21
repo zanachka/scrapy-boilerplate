@@ -15,7 +15,7 @@
 - [Black](https://github.com/psf/black) чтобы обеспечить единообразие кодового стиля (см. [here](#black))
 - Docker-ready (см. [here](#docker))
 - PM2-ready (см. [here](#pm2))
-- supports single-IP/rotating proxy config out of the box (см. [here](#proxy-middleware))
+- поддержка single-IP/rotating proxy из коробки (см. [here](#proxy-middleware))
 
 ## Installation
 
@@ -62,9 +62,9 @@ A single-endpoint proxy is used by default, assuming usage of rotating proxies s
 
 ## File and folder structure
 
-This boilerplate offers a more intuitive alternative to Scrapy's default project structure. Here, file/directory structure is more flattened and re-arranged a bit.
-
-- All scrapy-related code is placed directly in `src` subdirectory (without any subdirs with project name, contrary to default).
-- All scrapy classes (by default located in `items.py, middlewares.py, pipelines.py`) are converted to sub-modules, where each class is placed in its own separate file. Nothing else goes into those files. Helper functions/modules can be placed in the `helpers` module.
-- Configs in `scrapy.cfg` and `settings.py` are edited to correspond with these changes.
-- Additional subdirectories are added to contain code, related to working with database (`src/database`), RabbitMQ (`src/rabbitmq`).
+Этот шаблон предлагает более интуитивную альтернативу стандартной структуре проекта Scrapy. Здесь структура файлов / каталогов более сглажена и немного перестроена.
+- Весь код связанный с Scrapy перемещен непосредственно в `src/python/src` каталог (без каких-либо подкаталогов с именем проекта, которые присутствует в scrapy по умолчанию).
+- Все классы Scrapy (расположенные по умолчанию в `items.py, middlewares.py, pipelines.py`) преобразуются в подмодули, 
+где каждый класс помещается в свой отдельный файл.  Вспомагательные методы/классы вынесены в `utils` каталог.
+- Настройки в `scrapy.cfg` и `settings.py` отредактированы чтобы соотетствовать этим изменениям.
+- Добавлены дополнительные каталоги для хранения кода относящегося к работе с БД (`src/database`), RabbitMQ(`src/rmq`).
