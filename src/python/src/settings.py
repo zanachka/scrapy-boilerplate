@@ -5,8 +5,8 @@ from datetime import datetime, timedelta
 from distutils.util import strtobool
 from typing import Dict
 
-from scrapy.utils.log import configure_logging
 from dotenv import load_dotenv
+from scrapy.utils.log import configure_logging
 
 load_dotenv()
 
@@ -20,10 +20,8 @@ PROXY = os.getenv("PROXY", "")
 PROXY_AUTH = os.getenv("PROXY_AUTH", "")
 PROXY_ENABLED = strtobool(os.getenv("PROXY_ENABLED", "False"))
 
-USER_AGENT_RELEASE_DATE = '2020-11-17'
-USER_AGENT = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
-)
+USER_AGENT_RELEASE_DATE = "2020-11-17"
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
 
 CONCURRENT_REQUESTS = int(os.getenv("CONCURRENT_REQUESTS", "16"))
 CONCURRENT_REQUESTS_PER_DOMAIN = int(os.getenv("CONCURRENT_REQUESTS_PER_DOMAIN", "8"))
@@ -42,7 +40,7 @@ DEFAULT_REQUEST_HEADERS = {
     "Cache-Control": "max-age=0",
 }
 
-ROTATING_PROXIES_DOWNLOADER_HANDLER_AUTO_CLOSE_CACHED_CONNECTIONS_ENABLED: bool = True
+ROTATING_PROXIES_DOWNLOADER_HANDLER_AUTO_CLOSE_CACHED_CONNECTIONS_ENABLED: bool = False
 
 DOWNLOADER_MIDDLEWARES = {
     "scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware": None,
@@ -74,9 +72,7 @@ try:
 except ValueError:
     HTTPCACHE_ENABLED = False
 
-HTTPCACHE_IGNORE_HTTP_CODES = list(
-    map(int, (s for s in os.getenv("HTTPCACHE_IGNORE_HTTP_CODES", "").split(",") if s))
-)
+HTTPCACHE_IGNORE_HTTP_CODES = list(map(int, (s for s in os.getenv("HTTPCACHE_IGNORE_HTTP_CODES", "").split(",") if s)))
 
 EXTENSIONS = {}
 
@@ -93,5 +89,5 @@ if IS_SENTRY_ENABLED:
     EXTENSIONS["scrapy_sentry_sdk.extensions.SentryLogging"] = 1
 
 configure_logging()
-if datetime(*[int(number) for number in USER_AGENT_RELEASE_DATE.split('-')]) + timedelta(days=180) < datetime.now():
-    logging.warning('USER_AGENT is outdated')
+if datetime(*[int(number) for number in USER_AGENT_RELEASE_DATE.split("-")]) + timedelta(days=180) < datetime.now():
+    logging.warning("USER_AGENT is outdated")
